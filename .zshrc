@@ -11,3 +11,4 @@ export STARSHIP_CONFIG=~/dotfiles/starship.toml
 alias ls='eza --oneline --icons'
 alias ll='eza --long --icons'
 alias la='eza --long --icons --all'
+alias li='eza --all'
