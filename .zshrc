@@ -12,3 +12,6 @@ alias ll='eza --long --icons'
 alias la='eza --long --icons --all'
 alias li='eza --all'
 alias con='ssh weisb@lxhalle.in.tum.de'
+alias code='codium'
+
+export STM32CubeMX_PATH=/Applications/STMicroelectronics/STM32CubeMX.app/Contents/Resources
