@@ -1,5 +1,22 @@
 [core]
 	autocrlf = input
+	pager = delta -s 
+        excludesfile = ~/.gitignore
+        editor = nvim
+[fetch]
+	prune = true
+
+[pull]
+    rebase = true
+[rebase]
+    autoStash = true
+    autosquash = true
+[merge]
+    conflictstyle = diff3
+    tool = vimdiff
+[mergetool "vimdiff"]
+    path = nvim
+    keepBackup = false
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
