@@ -117,7 +117,6 @@ return {
       local servers = {
         "rust_analyzer",
         "ltex",
-        "clangd",
         "lua_ls",
         "marksman",
         "bashls",
