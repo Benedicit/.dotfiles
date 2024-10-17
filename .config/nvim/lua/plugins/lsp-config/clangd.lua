@@ -1,5 +1,0 @@
-return {
-  clangd = {
-    mason = false,
-  }
-}

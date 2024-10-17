@@ -70,6 +70,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+local function is_in_docker()
+  local dockerenv = io.open("/.dockerenv", "r")
+  if dockerenv then
+    dockerenv:close()
+    return true
+  end
+end
+
 return {
   { -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
@@ -107,10 +115,7 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        "clangd",
-        "gopls",
         "rust_analyzer",
-        "ocamllsp",
         "ltex",
         "clangd",
         "lua_ls",
@@ -141,10 +146,14 @@ return {
         "hadolint",
         "jsonlint",
         "vale",
-        "ocamlformat",
-        "markdownlint"
+        "markdownlint",
       })
-
+      if not is_in_docker() then vim.list_extend(servers, {
+        "clangd",
+        "gopls",
+        "ocamllsp",
+        "ocamlformat",
+      }) end
       require("mason-tool-installer").setup({ ensure_installed = servers })
 
       local handlers = {
