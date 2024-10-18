@@ -170,6 +170,11 @@ return {
         end,
       }
       mason_lsp.setup({ handlers = handlers })
+      local clangd = require("plugins.lsp-config.clangd")
+      lsp_config.clangd.setup({
+        keys = clangd.keys,
+        cmd = clangd.cmd,
+      })
     end,
   },
 }

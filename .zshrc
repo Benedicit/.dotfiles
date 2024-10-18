@@ -38,6 +38,7 @@ alias py='python3'
 alias tl='tldr'
 alias dotvim='cd ~/dotfiles/.config/nvim'
 alias db='dune build'
+alias linux='docker start linux && docker attach linux'
 
 # Conda setup
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
