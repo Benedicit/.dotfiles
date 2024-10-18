@@ -1,6 +1,7 @@
 return {
   { -- Autoformat
     "stevearc/conform.nvim",
+    branch = vim.fn.has('nvim-0.10') == 1 and 'master' or 'nvim-0.9',
     lazy = true,
     keys = {
       {
