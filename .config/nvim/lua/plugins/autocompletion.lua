@@ -39,6 +39,11 @@ return {
       local luasnip = require("luasnip")
       luasnip.config.setup({})
 
+      local check_backspace = function()
+        local col = vim.fn.col(".") - 1
+        return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+      end
+
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -47,10 +52,6 @@ return {
         },
         completion = { completeopt = "menu,menuone,noinsert" },
 
-        -- For an understanding of why these mappings were
-        -- chosen, you will need to read `:help ins-completion`
-        --
-        -- No, but seriously. Please read `:help ins-completion`, it is really good!
         mapping = cmp.mapping.preset.insert({
           -- Select the [n]ext item
           ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -66,15 +67,7 @@ return {
           ["<S-CR>"] = cmp.mapping.confirm({ select = true }),
 
           -- Manually trigger a completion from nvim-cmp.
-          --  Generally you don't need this, because nvim-cmp will display
-          --  completions whenever it has completion options available.
           ["<C-Space>"] = cmp.mapping.complete({}),
-          -- Think of <c-l> as moving to the right of your snippet expansion.
-          --  So if you have a snippet that's like:
-          --  function $name($args)
-          --    $body
-          --  end
-          --
           --[[
            <c-l> will move you to the right of each of the expansion locations.
           <c-h> is similar, except moving you backwards.
@@ -102,7 +95,7 @@ return {
               luasnip.expand()
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
-            elseif luasnip.check_backspace() then
+            elseif check_backspace() then
               fallback()
             else
               fallback()
