@@ -28,27 +28,40 @@ alias ls='eza --oneline --icons'
 alias ll='eza --long --icons'
 alias la='eza --long --icons --all'
 alias li='eza --all'
+alias ...='cd ../..'
 alias lrz='ssh $LXHALLE' # This environment variable needs to be defined locally
 alias code='codium'
+alias lg='lazygit'
 alias gb='./gradlew build'
 alias gbz='./gradlew buildZip'
 alias gbp='./gradlew generateProto'
 alias gcc='gcc-14'
+alias g++='g++-14'
 alias py='python3'
+alias python='python3'
 alias tl='tldr'
 alias dotvim='cd ~/dotfiles/.config/nvim'
 alias db='dune build'
 alias linux='docker start linux && docker attach linux'
+alias sld='docker stop linux'
+alias itsec='ssh -i $IT_SEC_KEY $IT_SEC_SERVER' 
+alias pypdf='jupyter nbconvert --to pdf'
+alias warrpi='ssh $WARRPI'
 
-# Conda setup
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+
+export STM32_PRG_PATH=/Applications/STMicroelectronics/STM32Cube/STM32CubeProgrammer/STM32CubeProgrammer.app/Contents/MacOs/bin
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/opt/anaconda3/bin:$PATH"
+        export PATH="/opt/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
+# <<< conda initialize <<<
+

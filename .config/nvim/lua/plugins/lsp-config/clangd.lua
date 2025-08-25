@@ -12,5 +12,6 @@ return {
     "--completion-style=detailed",
     "--function-arg-placeholders",
     "--fallback-style=llvm",
+    "--query-driver=/**/arm-none-eabi-gcc"
   },
 }

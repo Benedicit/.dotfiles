@@ -102,6 +102,19 @@ return {
       }
     end,
   },
+  {
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    priority = 1000,
+    init = function()
+      require("catppuccin").setup()
+      vim.cmd.colorscheme("catppuccin")
+      vim.cmd.hi("Comment gui=none")
+    end,
+  },
+
+  --[[
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -119,6 +132,7 @@ return {
       vim.cmd.hi("Comment gui=none")
     end,
   },
+  --]]
   { "MunifTanjim/nui.nvim", lazy = true },
 
   {
