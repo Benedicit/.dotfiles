@@ -10,15 +10,17 @@ keymap("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Diagnostic keymaps
 keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-keymap("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+keymap("n", "<S-d>", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 keymap("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 keymap("n", "<leader>vs", ":vsplit<CR>", opts)
 keymap("n", "<leader>sp", ":split<CR>", opts)
 -- Enter terminal
 keymap("n", "<leader>vt", ":vsplit<CR>:terminal<CR>", opts)
+keymap("n", "<leader>ht", ":split<CR>:terminal<CR>", opts)
+
 -- Exit terminal mode in the builtin terminal
-keymap("t", "<S-Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+keymap("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- NOTE: Keymaps specific for some programming languages
 keymap("n", "<leader>py", ":vsplit<CR>:terminal python3 %<CR>", opts) -- Execute current python file in a seperate NeoVim window

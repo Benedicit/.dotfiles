@@ -17,12 +17,20 @@ export PATH=$PATH:/Applications/ArmGNUToolchain/13.2.Rel1/arm-none-eabi/bin/
 export PATH=$PATH:/opt/homebrew/bin/gcc-14
 export PATH=$PATH:/opt/homebrew/opt/llvm/bin
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+eval "$(ssh-agent -s)"
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+alias get_include='~/helper_scripts/get_include_paths_from_tasking.sh'
+fi
+
 # Plugins
 plugins=(git colored-man-pages gradle vi-mode chucknorris autojump rand-quote)
 source $ZSH/oh-my-zsh.sh
 
 eval "$(starship init zsh)"
-export STARSHIP_CONFIG=~/dotfiles/starship.toml
+export STARSHIP_CONFIG=~/.dotfiles/starship.toml
 #Alias
 alias ls='eza --oneline --icons'
 alias ll='eza --long --icons'
@@ -40,11 +48,10 @@ alias g++='g++-14'
 alias py='python3'
 alias python='python3'
 alias tl='tldr'
-alias dotvim='cd ~/dotfiles/.config/nvim'
+alias dotvim='cd ~/.dotfiles/.config/nvim'
 alias db='dune build'
 alias linux='docker start linux && docker attach linux'
 alias sld='docker stop linux'
-alias itsec='ssh -i $IT_SEC_KEY $IT_SEC_SERVER' 
 alias pypdf='jupyter nbconvert --to pdf'
 alias warrpi='ssh $WARRPI'
 
